@@ -1,5 +1,9 @@
 <div class="card">
-  <%= link_to image_tag(prototype.image), prototype_path(prototype.id), class: "card__img" %>
+  <% if prototype.image.attached? %>
+    <%= link_to image_tag(prototype.image), prototype_path(prototype.id), class: "card__img" %>
+  <% else %>
+    <%= link_to "No Image Available", prototype_path(prototype.id), class: "card__img" %>
+  <% end %>
   <div class="card__body">
     <%= link_to prototype.title, prototype_path(prototype.id), class: "card__title" %>
     <p class="card__summary">
